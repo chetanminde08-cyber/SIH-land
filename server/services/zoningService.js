@@ -1,0 +1,1 @@
+export async function getZoning() { return { category: 'Unknown', message: 'Zoning information unavailable. Official verification required.', source: 'Official local authority', confidence: 'Low' }; }

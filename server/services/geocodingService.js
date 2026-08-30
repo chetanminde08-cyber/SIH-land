@@ -1,0 +1,4 @@
+import axios from 'axios';
+const headers = { 'User-Agent': 'SmartLandPrototype/1.0 (educational project)' };
+export async function searchLocation(query) { const { data } = await axios.get('https://nominatim.openstreetmap.org/search', { params: { q: query, format: 'jsonv2', addressdetails: 1, limit: 6 }, headers }); return data.map(x => ({ label: x.display_name, lat: +x.lat, lng: +x.lon, address: x.address })); }
+export async function reverseGeocode(lat, lng) { const { data } = await axios.get('https://nominatim.openstreetmap.org/reverse', { params: { lat, lon: lng, format: 'jsonv2', addressdetails: 1 }, headers }); const a = data.address || {}; return { label: data.display_name, village: a.village || a.town || a.city_district, city: a.city || a.town, district: a.state_district, state: a.state, pincode: a.postcode, country: a.country, road: a.road, suburb: a.suburb || a.neighbourhood }; }

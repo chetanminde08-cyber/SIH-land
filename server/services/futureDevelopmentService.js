@@ -1,0 +1,1 @@
+export async function getFutureDevelopment() { return { projects: [], message: 'No verified future-development information available for this prototype location.', source: 'Official verification required', confidence: 'Low' }; }

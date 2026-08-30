@@ -1,0 +1,1 @@
+export async function getWater(input, infrastructure) { const nearbyWater = infrastructure.nearby?.find(x => x.type === 'water'); return { availability: input || (nearbyWater ? 'Moderate' : 'Unknown'), nearbyWater, source: nearbyWater ? 'OpenStreetMap' : 'Data unavailable', confidence: nearbyWater ? 'Medium' : 'Low' }; }
